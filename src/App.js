@@ -1,23 +1,27 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import Navbar from './components/Navbar';
+import Home from './pages/home';
+import Footer from './components/Footer';
+import Portfolio from './pages/portfolio';
+import Contact from './pages/contact';
+import About from './pages/about';
+import {BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          DJs Custom Interiors
-        </p>
-        {/*<a*/}
-        {/*  className="App-link"*/}
-        {/*  href="https://reactjs.org"*/}
-        {/*  target="_blank"*/}
-        {/*  rel="noopener noreferrer"*/}
-        {/*>*/}
-        {/*  Learn React*/}
-        {/*</a>*/}
-      </header>
+        <Router>
+            <Navbar></Navbar>
+            <Routes>
+                <Route path="/" exact element={<Home />}></Route>
+                <Route path="/portfolio" exact element={<Portfolio />}></Route>
+                <Route path="/about" exact element={<About />}></Route>
+                <Route path="/contact" exact element={<Contact />}></Route>
+
+            </Routes>
+            <Footer />
+        </Router>
     </div>
   );
 }
